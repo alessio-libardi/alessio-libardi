@@ -64,5 +64,5 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: npm ci
         
-      - name: Format
-        run: npm run affected:apps -- target=deploy --base=origin/$GITHUB_BASE_REF~1 --head=origin/$GITHUB_HEAD_REF --parallel
+      - name: Deploy
+        run: npm run affected:apps -- target=deploy --base=HEAD~1 --head=origin/HEAD --parallel
