@@ -20,7 +20,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: '**/node_modules'
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -51,16 +51,19 @@ jobs:
           cache-name: cache-node-modules
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: '**/node_modules'
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
+        
       - name: Format
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
-        run: npm run format:check -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF
+        run: npm run format:check -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF
 
   lint:
     name: Lint
@@ -79,19 +82,22 @@ jobs:
         uses: actions/cache@v2
         id: cache-dependencies
         env:
-          cache-name: cache-dependencies
+          cache-name: cache-node-modules
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: '**/node_modules'
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
+        
       - name: Lint
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
-        run: npm run affected:lint -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:lint -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF --parallel
  
   build:
     name: Build
@@ -110,16 +116,19 @@ jobs:
         uses: actions/cache@v2
         id: cache-dependencies
         env:
-          cache-name: cache-dependencies
+          cache-name: cache-node-modules
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
+          path: '**/node_modules'
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+            
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Build
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
-        run: npm run affected:build -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:build -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF --parallel
