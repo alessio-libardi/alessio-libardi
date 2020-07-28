@@ -65,7 +65,7 @@ jobs:
         run: npm ci
         
       - name: Format
-        run: npm run format:check -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF
+        run: npm run format:check -- --base=$GITHUB_BASE_REF --head=$GITHUB_HEAD_REF
 
   lint:
     name: Lint
