@@ -25,9 +25,7 @@
               "apps/portfolio/src/favicon.ico",
               "apps/portfolio/src/assets"
             ],
-            "styles": [
-              "apps/portfolio/src/styles.scss"
-            ],
+            "styles": ["apps/portfolio/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -81,13 +79,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/portfolio/tsconfig.app.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/portfolio/**/*"
-            ]
+            "tsConfig": ["apps/portfolio/tsconfig.app.json"],
+            "exclude": ["**/node_modules/**", "!apps/portfolio/**/*"]
           }
         },
         "deploy": {
@@ -135,11 +128,7 @@
           "options": {
             "browserTarget": "portfolio:build:production",
             "serverTarget": "portfolio:server:production",
-            "routes": [
-              "/",
-              "/welcome",
-              "/about"
-            ]
+            "routes": ["/", "/welcome", "/about"]
           },
           "configurations": {
             "production": {}
