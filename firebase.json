@@ -2,10 +2,8 @@
   "hosting": [
     {
       "target": "portfolio",
-      "public": "dist/apps/portfolio",
-      "ignore": [
-        "**/.*"
-      ],
+      "public": "dist/apps/portfolio/browser",
+      "ignore": ["**/.*"],
       "headers": [
         {
           "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
