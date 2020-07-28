@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "portfolio",
-      "public": "dist/apps/portfolio",
+      "public": "dist/apps/portfolio/browser",
       "ignore": [
         "**/.*"
       ],
