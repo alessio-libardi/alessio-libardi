@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/portfolio",
+            "outputPath": "dist/apps/portfolio/browser",
             "index": "apps/portfolio/src/index.html",
             "main": "apps/portfolio/src/main.ts",
             "polyfills": "apps/portfolio/src/polyfills.ts",
@@ -25,9 +25,7 @@
               "apps/portfolio/src/favicon.ico",
               "apps/portfolio/src/assets"
             ],
-            "styles": [
-              "apps/portfolio/src/styles.scss"
-            ],
+            "styles": ["apps/portfolio/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -81,59 +79,59 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/portfolio/tsconfig.app.json",
-              "apps/portfolio/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/portfolio/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/portfolio/jest.config.js",
-            "tsConfig": "apps/portfolio/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/portfolio/src/test-setup.ts"
+            "tsConfig": ["apps/portfolio/tsconfig.app.json"],
+            "exclude": ["**/node_modules/**", "!apps/portfolio/**/*"]
           }
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
-          "options": {}
-        }
-      }
-    },
-    "portfolio-e2e": {
-      "root": "apps/portfolio-e2e",
-      "sourceRoot": "apps/portfolio-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/portfolio-e2e/cypress.json",
-            "tsConfig": "apps/portfolio-e2e/tsconfig.e2e.json",
-            "devServerTarget": "portfolio:serve"
+            "buildTarget": "portfolio:prerender:production"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/portfolio/server",
+            "main": "apps/portfolio/server.ts",
+            "tsConfig": "apps/portfolio/tsconfig.server.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "portfolio:serve:production"
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/portfolio/src/environments/environment.ts",
+                  "with": "apps/portfolio/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
             }
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "tsConfig": [
-              "apps/portfolio-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/portfolio-e2e/**/*"
-            ]
+            "browserTarget": "portfolio:build",
+            "serverTarget": "portfolio:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "portfolio:build:production",
+              "serverTarget": "portfolio:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "portfolio:build:production",
+            "serverTarget": "portfolio:server:production",
+            "routes": ["/", "/welcome", "/about"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -144,11 +142,11 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "unitTestRunner": "none",
+      "e2eTestRunner": "none"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "none"
     }
   },
   "defaultProject": "portfolio"
