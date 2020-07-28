@@ -74,6 +74,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -99,7 +101,7 @@ jobs:
         run: npm ci
         
       - name: Lint
-        run: npm run affected:lint -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:lint -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
  
   build:
     name: Build
@@ -108,6 +110,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -133,4 +137,4 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run affected:build -- --base=remotes/origin/$GITHUB_BASE_REF --head=remotes/origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:build -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
