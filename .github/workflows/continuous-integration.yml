@@ -63,7 +63,7 @@ jobs:
         run: npm ci
         
       - name: Format
-        run: npm run format:check -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF
+        run: npm run format:check -- --base=$GITHUB_BASE_REF --head=$GITHUB_HEAD_REF
 
   lint:
     name: Lint
@@ -97,7 +97,7 @@ jobs:
         run: npm ci
         
       - name: Lint
-        run: npm run affected:lint -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:lint -- --base=$GITHUB_BASE_REF --head=$GITHUB_HEAD_REF --parallel
  
   build:
     name: Build
@@ -131,4 +131,4 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run affected:build -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
+        run: npm run affected:build -- --base=$GITHUB_BASE_REF --head=$GITHUB_HEAD_REF --parallel
