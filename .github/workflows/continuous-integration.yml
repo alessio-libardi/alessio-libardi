@@ -58,8 +58,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
+        
       - name: Format
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
         run: npm run format:check -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF
 
   lint:
@@ -89,8 +92,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
+        
       - name: Lint
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
         run: npm run affected:lint -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
  
   build:
@@ -119,7 +125,10 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+            
+      - name: Install Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Build
-        if: steps.cache-dependencies.outputs.cache-hit == 'true'
         run: npm run affected:build -- --base=origin/$GITHUB_BASE_REF --head=origin/$GITHUB_HEAD_REF --parallel
