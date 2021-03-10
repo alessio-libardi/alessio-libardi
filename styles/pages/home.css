@@ -1,0 +1,43 @@
+
+body {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.home {
+  display: grid;
+  place-content: center;
+
+  width: calc(100% - 2em); height: calc(100% - 2em);
+  max-width: 768px;
+  margin: 0 auto; padding: 1em;
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+
+  margin-bottom: 0.25em;
+}
+
+.subtitle {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.summary {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.5em;
+
+  margin-bottom: 0.75em;
+}
+
+.address {
+  font-size: 1em;
+  font-weight: normal;
+}

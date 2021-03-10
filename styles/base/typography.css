@@ -1,0 +1,12 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--font-size)
+}
+
+a {
+  color: var(--color-surface);
+}
+
+em {
+  font-style: italic;
+}
