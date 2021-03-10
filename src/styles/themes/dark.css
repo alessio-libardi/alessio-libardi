@@ -1,0 +1,6 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-foreground: var(--color-gray-light);
+    --color-background: var(--color-gray-dark);
+  }
+}
