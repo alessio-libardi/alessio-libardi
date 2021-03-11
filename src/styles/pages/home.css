@@ -33,11 +33,11 @@ body {
   font-size: 1em;
   font-weight: normal;
   line-height: 1.5em;
-
-  margin-bottom: 0.75em;
 }
 
 .address {
   font-size: 1em;
   font-weight: normal;
+
+  margin-top: 1.5em;
 }
