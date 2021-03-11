@@ -7,4 +7,6 @@ a {
   color: var(--color-surface);
 }
 
-
+em {
+  font-weight: bolder;
+}

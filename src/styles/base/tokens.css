@@ -2,9 +2,9 @@
   --color-black: black;
   --color-white: white;
  
-  --color-gray-light: white;
-  --color-gray-dark: #252525;
+  --color-gray-light: #ededed;
+  --color-gray-dark: #111111;
 
   --font-family-montserrat: 'Montserrat', sans-serif;
-  --font-size-mobile: 16px;
+  --font-size: 16px;
 }
