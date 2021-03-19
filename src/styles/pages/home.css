@@ -27,17 +27,21 @@ body {
 .subtitle {
   font-size: 1.25em;
   font-weight: bold;
+  line-height: 1.25em;
 }
 
 .summary {
   font-size: 1em;
   font-weight: normal;
   line-height: 1.5em;
+
+  text-align: justify;
 }
 
-.address {
+.footer {
   font-size: 1em;
   font-weight: normal;
+  line-height: 1.5em;
 
   margin-top: 1.5em;
 }
