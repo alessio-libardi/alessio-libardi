@@ -1,6 +1,4 @@
-# Alessio Libardi [<img src="https://svgshare.com/i/ad5.svg" alt="Wonderflow Logo" width="90" height="90" align="right">](https://www.alessiolibardi.dev)
-
-### Hi there 👋🏻
+# Hi, I'm Alessio 👋🏻 [<img src="https://svgshare.com/i/ad5.svg" alt="Developer image" width="90" height="90" align="right">](https://www.alessiolibardi.dev) 
 
 I am a young developer with a passion for websites and in particular for the design and development of the user interface. My goal as a web developer is to design creative and technologically advanced projects.
 
