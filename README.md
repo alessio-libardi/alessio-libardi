@@ -1,9 +1,3 @@
-# Hi, I'm **Alessio** 👋🏻
+# Hi, I'm Alessio 👋🏻
 
-I'm a **Philosophy Student** and **Software Engineer**
-
-**Creating digital experiences since 2017** helping people realize their needs by<br> 
-**combining my knowledge and passion** with my desire for constant growth<br>
-**through a minimalist approach**, believing in quality rather than quantity.
-
-Feel free to message me or see my works.
+I'm a Software Engineer with experience since 2018 and a Philosophy student since 2022. I like to take on UI, UX, and DevEx challenges, focusing on creating smooth user experiences and making developer workflows easier. I also like to simplify and automate processes, combining my technical skills with a curiosity about life's bigger questions.
