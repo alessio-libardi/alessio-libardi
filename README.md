@@ -1,3 +1,3 @@
 # Hi, I'm Alessio 👋🏻
 
-I'm a Software Engineer with experience since 2018 and a Philosophy student since 2022. I like to challenge myself on Frontend and DevEx challenges, with a passion for creating seamless user experiences and improving developer workflows. I strive to automate and simplify processes, blending technical expertise with a curiosity for life's deeper questions.
+I'm a Software Engineer with experience since 2018 and a Philosophy student since 2022. I like to take on UI, UX, and DevEx challenges, focusing on creating smooth user experiences and making developer workflows easier. I also like to simplify and automate processes, combining my technical skills with a curiosity about life's bigger questions.
